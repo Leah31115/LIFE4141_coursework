@@ -6,6 +6,8 @@ library(tidyverse)
 # This script makes plots of fst scans for each population comparison against 
 # the LAB population to identify 1% empirical outliers
 
+setwd("C:/Users/leahe/Documents/LIFE4141_Comparative_and_Evolutionary_Genomics/LIFE4141_coursework_resources/evo_data_files")
+
 # FST scan for LAB vs NEN
 fst_1000_win <- read.table("lab_nen_fst.1000.out.windowed.weir.fst", sep = "\t",
                            header = T)
@@ -47,7 +49,7 @@ ggplot(fst_1000_win, aes(x=MEAN_BIN, y=WEIGHTED_FST)) +
   geom_point(data = fst_high, aes(x = MEAN_BIN, y = WEIGHTED_FST), color = "blue") +
   xlab("Chromosome 5 location (Mb)") +
   ylab("Weighted FST") +
-  ggtitle("Manhattan plot of FST values on chromosome 5 for LAB vs NEN") +
+  ggtitle("FST scan of chromosome 5 for LAB vs NEN Cochlearia pyrenaica populations") +
   theme(plot.title = element_text(hjust = 0.5)) +
   geom_hline(yintercept = outlier_threshold, linetype="dashed", color="red") +
   annotate("rect", xmin = 4350000, xmax = 4500000, ymin = 0, ymax = 0.7,
@@ -110,7 +112,7 @@ ggplot(fst_ODN_LAB, aes(x=MEAN_BIN, y=WEIGHTED_FST)) +
   geom_point(data = OL_fst_outliers, aes(x = MEAN_BIN, y = WEIGHTED_FST), color = "blue") +
   xlab("Chromosome 5 location (Mb)") +
   ylab("Weighted FST") +
-  ggtitle("Manhattan plot of FST values on chromosome 5 for LAB vs ODN") +
+  ggtitle("FST scan of chromosome 5 for LAB vs ODN Cochlearia pyrenaica populations") +
   theme(plot.title = element_text(hjust = 0.5)) +
   geom_hline(yintercept = OL_outlier_threshold, linetype="dashed", color="red") +
   annotate("rect", xmin = 4200000, xmax = 4250000, ymin = 0, ymax = 1,
